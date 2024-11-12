@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
@@ -24,14 +24,37 @@ const mockData = [
 ];
 
 function reduecer(state, action) {
-  return state;
+  switch (action.type) {
+    case "CREATE":
+      return [action.data, ...state];
+  }
 }
 
 function App() {
   const [data, dispatch] = useReducer(reduecer, mockData);
+  const idRef = useRef(3);
+
+  const onCreate = (createdDate, emotionId, content) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: idRef.current++,
+        createdDate,
+        emotionId,
+        content,
+      },
+    });
+  };
 
   return (
     <>
+      <button
+        onClick={() => {
+          onCreate(new Date().getTime(), 1, "hello");
+        }}
+      >
+        일기 추가 테스트
+      </button>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
