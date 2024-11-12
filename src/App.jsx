@@ -4,18 +4,31 @@ import New from "./pages/New";
 import Diary from "./pages/Diary";
 import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
-import { getEmotionImage } from "./util/get-emotion-image";
+import Buttom from "./components/Button";
 
 function App() {
   return (
     <>
-      <div>
-        <img src={getEmotionImage(1)} />
-        <img src={getEmotionImage(2)} />
-        <img src={getEmotionImage(3)} />
-        <img src={getEmotionImage(4)} />
-        <img src={getEmotionImage(5)} />
-      </div>
+      <Buttom
+        text={"123"}
+        onClick={() => {
+          console.log("123번 버튼 클릭");
+        }}
+      />
+      <Buttom
+        text={"123"}
+        type={"POSITIVE"}
+        onClick={() => {
+          console.log("123번 버튼 클릭");
+        }}
+      />
+      <Buttom
+        text={"123"}
+        type={"NAGATIVE"}
+        onClick={() => {
+          console.log("123번 버튼 클릭");
+        }}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
