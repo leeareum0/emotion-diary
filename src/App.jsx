@@ -5,10 +5,17 @@ import Diary from "./pages/Diary";
 import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 import Buttom from "./components/Button";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
+      <Header
+        title={"Header"}
+        leftChild={<Buttom text={"Left"} />}
+        rightChild={<Buttom text={"Right"} />}
+      />
+
       <Buttom
         text={"123"}
         onClick={() => {
