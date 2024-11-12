@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 import Buttom from "./components/Button";
 import Header from "./components/Header";
+import Edit from "./pages/Edit";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<New />} />
         <Route path="/diary" element={<Diary />} />
+        <Route path="/edit/:id" element={<Edit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
