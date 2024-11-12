@@ -31,6 +31,10 @@ function reduecer(state, action) {
       return state.map((item) =>
         String(item.id) === String(action.data.id) ? action.data : item
       );
+    case "DELETE":
+      return state.filter((item) => String(item.id) !== String(action.id));
+    default:
+      return state;
   }
 }
 
@@ -62,6 +66,13 @@ function App() {
     });
   };
 
+  const onDelete = (id) => {
+    dispatch({
+      type: "DELETE",
+      id,
+    });
+  };
+
   return (
     <>
       <button
@@ -77,6 +88,13 @@ function App() {
         }}
       >
         일기 수정 테스트
+      </button>
+      <button
+        onClick={() => {
+          onDelete(1);
+        }}
+      >
+        일기 삭제 테스트
       </button>
       <Routes>
         <Route path="/" element={<Home />} />
