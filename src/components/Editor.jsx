@@ -62,7 +62,7 @@ const Editor = ({ onSubmit }) => {
     });
   };
 
-  const onSubmitClickButton = () => {
+  const onSubmitButtonClick = () => {
     onSubmit(input);
   };
 
@@ -109,7 +109,7 @@ const Editor = ({ onSubmit }) => {
       <section className="button_section">
         <Button text={"취소하기"} />
         <Button
-          onClick={onSubmitClickButton}
+          onClick={onSubmitButtonClick}
           text={"작성완료"}
           type={"POSITIVE"}
         />
