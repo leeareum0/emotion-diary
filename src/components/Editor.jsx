@@ -62,9 +62,6 @@ const Editor = () => {
     });
   };
 
-  // 임시 데이터
-  const emotionId = 5;
-
   return (
     <div className="Editor">
       <section className="date_section">
@@ -81,9 +78,17 @@ const Editor = () => {
         <div className="emotion_list_wrapper">
           {emotionLst.map((item) => (
             <EmotionItem
+              onClick={() =>
+                onChangeInput({
+                  target: {
+                    name: "emotionId",
+                    value: item.emotionId,
+                  },
+                })
+              }
               key={item.emotionId}
               {...item}
-              isSelected={item.emotionId === emotionId}
+              isSelected={item.emotionId === input.emotionId}
             />
           ))}
         </div>
