@@ -3,29 +3,7 @@ import EmotionItem from "./EmotionItem";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const emotionLst = [
-  {
-    emotionId: 1,
-    emotionName: "완전 좋음",
-  },
-  {
-    emotionId: 2,
-    emotionName: "좋음",
-  },
-  {
-    emotionId: 3,
-    emotionName: "보통",
-  },
-  {
-    emotionId: 4,
-    emotionName: "나쁨",
-  },
-  {
-    emotionId: 5,
-    emotionName: "완전 나쁨",
-  },
-];
+import { emotionList } from "../util/constants";
 
 const getStringDate = (targetDate) => {
   // 날짜 -> YYYY-MM-DD (09 09)
@@ -92,7 +70,7 @@ const Editor = ({ initData, onSubmit }) => {
       <section className="emotion_section">
         <h4>오늘의 감정</h4>
         <div className="emotion_list_wrapper">
-          {emotionLst.map((item) => (
+          {emotionList.map((item) => (
             <EmotionItem
               onClick={() =>
                 onChangeInput({
