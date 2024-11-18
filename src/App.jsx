@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { createContext, useEffect, useReducer, useRef } from "react";
+import { createContext, useEffect, useReducer, useRef, useState } from "react";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
@@ -40,6 +40,7 @@ export const DiaryStateContext = createContext();
 export const DiaryDispatchContext = createContext();
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [data, dispatch] = useReducer(reduecer, []);
   const idRef = useRef(0);
 
@@ -47,11 +48,13 @@ function App() {
     // Data 꺼내오기
     const storedData = localStorage.getItem("diary");
     if (!storedData) {
+      setIsLoading(false);
       return;
     }
 
     const parsedData = JSON.parse(storedData);
     if (!Array.isArray(parsedData)) {
+      setIsLoading(false);
       return;
     }
 
@@ -68,6 +71,7 @@ function App() {
       type: "INIT",
       data: parsedData,
     });
+    setIsLoading(false);
   }, []);
 
   const onCreate = (createdDate, emotionId, content) => {
@@ -100,6 +104,10 @@ function App() {
       id,
     });
   };
+
+  if (isLoading) {
+    return <div>데이터 로딩 중입니다...</div>;
+  }
 
   return (
     <>
