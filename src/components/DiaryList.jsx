@@ -12,7 +12,7 @@ const DiaryList = ({ data }) => {
     setSortType(e.target.value);
   };
 
-  const getSortedDate = () => {
+  const getSortedData = () => {
     return data.toSorted((a, b) => {
       if (sortType === "oldest") {
         return Number(a.createdDate) - Number(b.createdDate);
@@ -22,7 +22,7 @@ const DiaryList = ({ data }) => {
     });
   };
 
-  const sortedData = getSortedDate();
+  const sortedData = getSortedData();
 
   return (
     <div className="DiaryList">
